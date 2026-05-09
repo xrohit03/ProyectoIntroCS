@@ -17,9 +17,6 @@ from sklearn.preprocessing import normalize
 # ============================================================
 # CARGA DEL DATASET
 # ============================================================
-print("=" * 70)
-print("CARGANDO DATASET")
-print("=" * 70)
 
 df = pd.read_csv('smogon.csv', on_bad_lines='skip')
 df['moves'] = df['moves'].fillna('')
@@ -42,7 +39,7 @@ TIPOS_POKEMON = [
 TIPOS_SIN_NORMAL = [t for t in TIPOS_POKEMON if t != 'normal']
 
 # ============================================================
-# FUNCIÓN DE PREPROCESAMIENTO CORREGIDA
+# FUNCIÓN DE PREPROCESAMIENTO
 # ============================================================
 def preprocesar_moves(texto, tipos):
     """
@@ -83,8 +80,8 @@ vocabulario = tfidf_vectorizer.get_feature_names_out()
 
 print(f"\n[1.2] Número total de columnas (elementos del vocabulario): {len(vocabulario)}")
 
-print(f"\n[1.3] Primeros 100 elementos del vocabulario:")
-for i, term in enumerate(vocabulario[:100]):
+print(f"\n[1.3] Elementos del vocabulario:")
+for i, term in enumerate(vocabulario[:]):
     print(f"  {i+1:3d}. {term}")
 print(f"  ... (total: {len(vocabulario)} elementos)")
 
